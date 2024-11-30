@@ -1,0 +1,15 @@
+{% extends 'app.html' %}
+{% block appcontent %}
+
+<div class="carddesign card" style="margin-top: 10%;background-position: bottom right;background-size: contain;">
+        <h2>Register as Creator</h2>
+        <p>Kickstart your creator's journey<br> by register yourself as a creator.</p>
+
+        <form method="post">       
+            <input type="checkbox" name="creator-register" id="creator-register" required>
+            <label for="creator-register">Are you ready to start your journey.</label><br>
+            <button type="submit" id="button1">Register</button>
+        </form>    
+</div>
+
+{% endblock%}

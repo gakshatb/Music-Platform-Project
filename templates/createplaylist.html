@@ -1,0 +1,33 @@
+{% extends 'app.html' %}
+{% block appcontent %}
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <div style="color: red;text-align: center;">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+<div class="admin_tracks" style="text-align: center;">
+    <form action="/app/{{name}}/createplaylist" method="post" autocomplete="off">
+        <div class="row1">
+            <h2>New Playlist</h2>  
+            <div class="sbox" >
+                <input type="text" title="pa" name="playlistname" placeholder="Enter Playlist Name" required>
+            </div>
+        </div>        
+                
+        <div class="row" style="background: none;border:none;">
+            {% for val in all_songs_list %}
+                <div class="item">
+                    <label for="{{ val[0] }}">{{ val[1] }}</label>
+                    <input type="checkbox" name="checkbox" value="{{ val[1] }}" id="{{ val[0] }}">
+                </div>
+            {% endfor %}    
+        </div>
+        <button id="button1" >Add Playlist</button>
+    </form>
+</div>    
+
+{% endblock %}

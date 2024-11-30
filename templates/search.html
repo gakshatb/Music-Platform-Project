@@ -1,0 +1,34 @@
+{% extends 'app.html' %}
+{% block appcontent %}
+
+{% if results['Songs'] or results['Playlist'] %}
+    <h2 style="text-align: center;">Search Results: {{query}}</h2>
+
+    <div class="admin_tracks">
+        <div class="carddesign row" style="margin: 1em;">
+            {% for key, items in results.items() %}
+                {% for item in items %}
+                    {% if key == 'Songs' %}
+                        <h4>{{key}}</h4>
+                        <div class="item">
+                            <h4>{{ item.title() }}</h4>
+                            <form action="/app/{{item.title()}}" method="post">
+                                <button id="button2" >Read_Lyrics</button>
+                            </form>
+                        </div>
+                    {% elif key == 'Playlist' %}
+                        <h4>{{key}}</h4>
+                        <div class="item">
+                            <h4>{{ item }}</h4>
+                        </div>
+                    {% endif %}    
+                {% endfor %}  
+            {% endfor %}
+        </div>
+    </div>
+
+{% else %}
+<h2 style="text-align: center;">No Results Found for {{query}}.</h2>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends 'app.html' %}
+{% block appcontent %}
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <div style="color: red;text-align: center;">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+<div class="carddesign card lyrics">
+    <div class="row">
+        <div class="col">
+            <h2>{{ play[1] }}</h2>
+            <h4>{{play[2]}} | {{play[6]}} | {{play[5]}}s | {{play[3]}}</h4>
+        </div>
+        <a id="button1" onclick="rate()">Rate {{rated[0]}}</a>
+    </div>
+
+    <div class="card" style="text-align: left;">
+        <p>{{play[4]}}</p>
+    </div>
+
+    <div class="musicplayer">
+        <audio controls preload="none" autoplay loop><source src="{{ url_for('static', filename='Songs/'+play[1]+'.mp3') }}" type="audio/mpeg"></audio>
+    </div>
+
+    <div class="likecomment">
+        <div class="header-links">
+            <a onclick="like()">Like</a>
+            <p> | </p>
+            <a onclick="comment()">Comment</a>
+        </div>
+        <div id="com" style="margin-left: 10px;color: white;"></div>
+    </div>
+    
+    
+</div>
+
+<script>
+    function like(){
+        alert("You liked the song!");
+    }
+    function comment(){
+        let com=prompt('Enter your comment:');
+        document.getElementById('com').innerHTML += 'New Comment: '+com +'<br><br>';
+
+    }
+    function rate() {
+        let rt = prompt('Enter Rating on 1-5 scale:');
+        if (rt >= 1 && rt <= 5) {
+            // Send the rating to the Flask backend
+            submitRating(rt);
+        } else {
+            alert("Invalid rating");
+        }
+    }
+
+    function submitRating(rating) {
+        const data = {
+            sid: '{{play[0]}}',
+            rating: rating
+        };
+
+        fetch('/app/add_rating', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error submitting rating');
+            }
+            return response.json();  // Parse the JSON response
+        })
+        .then(data => {
+            alert(data.message);  // Show the success message
+            document.getElementById('button1').innerHTML = 'Rate ' + rating;  // Update the button text
+        })
+        .catch(error => {
+            console.error('Error:', error.message);
+        });
+    }
+</script>
+
+{% endblock %}

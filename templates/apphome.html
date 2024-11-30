@@ -1,0 +1,84 @@
+{% extends 'app.html' %}
+{% block appcontent %}
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <div style="color: red;text-align: center;">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+<div class="tracks">
+    <div class="row">
+        <h2>Recomanded Tracks</h2>
+        <a id="button1" onclick="show_more()">Show More</a>
+    </div>
+
+    <div id='show_more' class="song_row">
+        {% for song in recommendation %}
+            <div class="carddesign card">
+                <h3>{{ song[0] }}</h3>
+                <form action="/app/{{song[0]}}" method="post">
+                    <button id="button2" >Read_Lyrics</button>
+                </form>
+            </div>
+        {% endfor %}   
+    </div>
+</div>
+
+<div class="tracks">
+    <div class="row">
+        <h2>Your Playlist</h2>
+        <a id="button1" href="{{ url_for('create_playlist', nm=name) }}">Create New Playlist</a>
+    </div>
+
+    <div class="song_row">
+        {% for playlist in album %}
+            <div class="carddesign card">
+                <h3>{{ playlist[0] }}</h3>
+                <form action="/app/{{name}}/edit_{{playlist[0]}}" method="post">
+                    <button id="button2" >View_Tracks</button>
+                </form>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="tracks">
+    {% for gen in genre %}
+        <div class="row">
+            <h2>{{ gen[0] }}</h2>
+        </div>
+
+        <div class="song_row">
+            {% for song in songs %}
+                {% if song.genre == gen[0]%}
+                    <div class="carddesign card">
+                        <h3>{{ song[0] }}</h3>
+                        <form action="/app/{{song[0]}}" method="post">
+                            <button id="button2" >Read_Lyrics</button>
+                        </form>
+                    </div>
+                {% endif %}
+            {% endfor %}        
+        </div>    
+    {% endfor %}    
+</div>
+
+<script>
+    function show_more(){
+        let sh= document.getElementById('show_more');
+        let but= document.getElementById('button1');
+        if(sh.style.display=='flex'){
+            sh.style.display='block';
+            but.innerHTML = "Show Less";
+            but.style.backgroundColor='red';
+        }
+        else{
+            sh.style.display='flex';
+            but.innerHTML = "Show More";
+            but.style.backgroundColor='var(--button-color)';
+        }
+    }
+</script>
+{% endblock %}

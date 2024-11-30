@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='icon.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Creator DashBoard</title>
+</head>
+<body>
+    <header> 
+        <h1>Creator Account</h1>
+        <div class="header-links">
+            <a href="{{ url_for('upload_songs', nm=name) }}">Upload Song</a>
+            <p> | </p>
+            <a href="{{ url_for('test', nm=name) }}">User Account</a>
+            <p> | </p>
+            <a id="button2" href="{{ url_for('logout') }}" style="color: var(--danger);border: 2px solid var(--danger);">Logout</a>
+        </div>
+    </header>
+    
+    <hr>
+    <div class="upload_song" style="display: flex;justify-content: center;">
+        <div class="container" style="width: 400px;">
+            <h2>Edit Song: {{song[1]}}</h2>
+            <form action="/app/edit_{{song[1]}}" method="post" autocomplete="on">
+                <div class="form-group">
+                    <label for="title">Title:</label>
+                    <input type="text" id="title" name="title" value="{{song[1]}}" required>
+                </div>
+    
+                <div class="form-group">
+                    <label for="singer">Singer:</label>
+                    <input type="singer" id="singer" name="singer" value="{{song[2]}}" required>
+                </div>
+    
+                <div class="form-group">
+                    <label for="date">Release Date:</label>
+                    <input type="text" name="date" name="date" value="{{song[3]}}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="duration">Duration:</label>
+                    <input type="number" name="duration" name="duration" value="{{song[5]}}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="genre">Genre:</label>
+                    <input type="text" name="genre" name="genre" value="{{song[6]}}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="lyrics">Lyrics:</label>
+                    <textarea name="lyrics" id="lyrics" cols="54" rows="10" required style="border-radius: 1em;border: 1px solid var(--button-text-color);background:none;color:white;">{{song[4]}}</textarea>
+                </div>
+
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div style="color: red;text-align: center;">{{ message }}</div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                <div class="form-group">
+                    <button type="submit" id="button1">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>            
+</body>
+</html>
