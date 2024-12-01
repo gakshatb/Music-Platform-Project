@@ -1,22 +1,24 @@
 # Module Importing
-from flask import *
 from model import * 
+
+
+from config import appconfig as appcfg
+from flask import Flask,render_template,request,redirect,url_for,flash,session, jsonify
+
+
 import json
-import difflib     # Close match search for search result.
-import matplotlib.pyplot as plt
+import difflib
+
 
 # Use the Agg backend to avoid the main thread issue
 import matplotlib
 matplotlib.use('Agg')
+import matplotlib.pyplot as plt
 ####################################################
 
 
-
-
 app = Flask(__name__)
-app.secret_key = '123'
-
-
+app.secret_key = appcfg.SECRET_KEY
 
 
 # Welcome Page
@@ -617,4 +619,4 @@ def logout():
 
 # App Exection
 if __name__== "__main__":
-    app.run(debug=False, host='0.0.0.0')
+    app.run(debug=True, host='0.0.0.0')
