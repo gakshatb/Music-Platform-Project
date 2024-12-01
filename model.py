@@ -5,18 +5,83 @@ from config import dataconfig as data
 
 
 ############################################### Database setup ###################################################
-
 # Creating database
 con=sqlite3.connect(data.database)
 
 
-# Initializing tables
-con=sqlite3.connect(data.database)
-con.execute("create table if not exists user(pid integer primary key,name text,address text,contact text,pwd text)")
-con.execute("create table if not exists song(sid integer primary key,title text,singer text,date text,lyrics text,duration number, genre text, uploader text)")
-con.execute("create table if not exists album(playlist_name text, sid text, user text)")
-con.execute("create table if not exists rating (user_name text,sid integer references song(sid), rating integer, PRIMARY KEY (user_name, sid))")
-con.execute("create table if not exists creator(pid integer primary key autoincrement,name text)")
+con.execute('''
+CREATE TABLE IF NOT EXISTS User (
+    user_id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    user_name TEXT NOT NULL,
+    name TEXT NOT NULL, 
+    email TEXT NOT NULL, 
+    phone_number TEXT NOT NULL, 
+    password TEXT NOT NULL,
+    is_admin BOOLEAN DEFAULT (FALSE)
+);''')
+
+
+con.execute('''
+CREATE TABLE IF NOT EXISTS Song (
+    song_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    duration INTEGER,
+    album_id INTEGER,
+    lyrics TEXT,
+    artist TEXT NOT NULL,
+    uploader TEXT NOT NULL,
+    genre TEXT,
+    release_date DATE,
+    FOREIGN KEY (album_id) REFERENCES Album(album_id)
+);''')
+
+
+con.execute('''
+CREATE TABLE IF NOT EXISTS Album (
+    album_id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    title TEXT NOT NULL, 
+    artist TEXT NOT NULL, 
+    genre TEXT, 
+    release_date DATE, 
+    cover_image_url TEXT
+);''')
+
+
+con.execute('''
+CREATE TABLE IF NOT EXISTS Rating (
+    rating_id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    user_id INTEGER NOT NULL, 
+    song_id INTEGER NOT NULL, 
+    rating INTEGER CHECK (rating BETWEEN 1 AND 5), 
+    review TEXT, 
+    rated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+    FOREIGN KEY (user_id) REFERENCES User(user_id), 
+    FOREIGN KEY (song_id) REFERENCES Song(song_id)
+);''')
+
+
+con.execute('''
+CREATE TABLE IF NOT EXISTS Playlist (
+    playlist_id INTEGER PRIMARY KEY, 
+    user_id INTEGER NOT NULL, 
+    name TEXT NOT NULL, 
+    description TEXT, 
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+    FOREIGN KEY (user_id) REFERENCES User(user_id)
+);''')
+
+
+con.execute('''
+CREATE TABLE IF NOT EXISTS PlaylistSong (
+    playlist_song_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    playlist_id INTEGER NOT NULL, 
+    song_id INTEGER NOT NULL, 
+    added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+    FOREIGN KEY (playlist_id) REFERENCES Playlist(playlist_id), 
+    FOREIGN KEY (song_id) REFERENCES Song(song_id)
+);''')
+
+
 con.close()
 
 
