@@ -1,20 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome</title>
-    <link rel="shortcut icon" href="{{ url_for('static', filename='icon.png') }}" type="image/x-icon">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
+{% extends 'base.html' %}
 
-    {% include 'header_init.html' %}
-    <div class="content">
-        {% block content %}
-            <!-- Templating data for initial -->
-        {% endblock %}
-    </div>
-    
-</body>
-</html>
+{% block title %}Resonix - Music Streaming Application{% endblock %}
+
+{% block content %}
+<h1 style="text-align: center;align-items: center;margin-top: 20%;"> Welcome to Music Application</h1>    
+        <div class="button">
+            <a id="button1" href="{{ url_for('index') }}">Login</a>
+            <a id="button2" href="{{ url_for('index') }}">Register</a>
+        </div>
+{% endblock %}
