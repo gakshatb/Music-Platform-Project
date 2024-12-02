@@ -1,12 +1,11 @@
 import sqlite3
-
-
 from config import dataconfig as data
 
 
 ############################################### Database setup ###################################################
+
 # Creating database
-con=sqlite3.connect(data.database)
+con=sqlite3.connect(data.DATABASE)
 
 
 con.execute('''
@@ -87,7 +86,8 @@ con.close()
 
 # DBConnection
 def get_db_connection():
-    conn = sqlite3.connect(data.database)
+    conn = sqlite3.connect(data.DATABASE)
     conn.row_factory = sqlite3.Row
     return conn
+
 ##################################################################################################################

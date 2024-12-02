@@ -1,24 +1,36 @@
+######################################     IMPORT LIBRARIES     ########################################
+
+
 # Module Importing
 from model import * 
-
-
 from config import appconfig as appcfg
-from flask import Flask, render_template, request,redirect, url_for, flash, session, jsonify
+from config import dataconfig as data
 
 
+import os
 import json
 import difflib
+from flask import Flask, render_template, request,redirect, url_for, flash, session, jsonify
 
 
 # Use the Agg backend to avoid the main thread issue
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-####################################################
 
 
-app = Flask(__name__)
-app.secret_key = appcfg.SECRET_KEY
+###########################################     SETUP APP     ##########################################
+
+
+curr_dir = os.path.abspath(os.path.dirname(__file__))
+
+
+#Creating a Flask instance
+app=Flask(__name__, template_folder="templates")
+app.secret_key= appcfg.SECRET_KEY
+
+
+#############################################     ROUTES     ###########################################
 
 
 # Welcome Page
@@ -32,7 +44,7 @@ def user_login():
     if request.method=='POST':
         name=request.form['username'].strip()
         password=request.form['password'].strip()
-        con=sqlite3.connect("database.db")
+        con=sqlite3.connect(data.DATABASE)
         con.row_factory=sqlite3.Row
         cur=con.cursor()
         cur.execute("select * from user where name=? and pwd=?",(name,password))
@@ -56,7 +68,7 @@ def register():
             address=request.form['address'].strip().lower()
             contact=request.form['contact'].strip()
             pwd=request.form['pwd'].strip()
-            con=sqlite3.connect("database.db")
+            con=sqlite3.connect(data.DATABASE)
             cur=con.cursor()
 
             cur.execute("select * from user where name=? and address=?",(name,address))
@@ -608,15 +620,16 @@ def delete_album(abm):
         return redirect(url_for('admin_albums'))
 ###########################################################################    
 
-
-
-
 @app.route('/logout')
 def logout():
     session.clear()
     return redirect(url_for("index")) 
 
 
+#######################################     RUN THE APPLICATION     ####################################
+
+
 # App Exection
 if __name__== "__main__":
     app.run(debug=True, host='0.0.0.0')
+
