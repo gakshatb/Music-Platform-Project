@@ -3,7 +3,7 @@ from model import *
 
 
 from config import appconfig as appcfg
-from flask import Flask,render_template,request,redirect,url_for,flash,session, jsonify
+from flask import Flask, render_template, request,redirect, url_for, flash, session, jsonify
 
 
 import json
