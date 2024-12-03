@@ -1,33 +1,30 @@
 <nav class="navbar">
-  <div class="brand">
-      <h1>Resonix</h1>
+  <div class="brand logo">
+    <img class="logo" src="{{ url_for('static', filename='icon.png') }}" alt="Resonix" />
+    <h1>Resonix</h1>
   </div>
   <div class="center-nav">
-      <a href="#" class="navitem active" onclick="select(this)" data-clr="#740DAD">
-          <ion-icon name="home"></ion-icon>
-      </a>
-      <div class="navsearch">
-          <input class="searchbox" type="text" placeholder="Search...." />
-          <div class="searchicon" onclick="toggleSearch()">
-              <ion-icon name="search"></ion-icon>
-          </div>
+    <a href="/" class="navitem active" onclick="select(this)" data-clr="#740DAD">
+      <ion-icon name="home"></ion-icon>
+    </a>
+    <div class="navsearch">
+      <input class="searchbox" type="text" placeholder="Search...." />
+      <div class="searchicon" onclick="toggleSearch()">
+        <ion-icon name="search"></ion-icon>
       </div>
+    </div>
   </div>
   <div class="hamburger" onclick="toggleMenu()">
-      <div class="hamburger-lines">
-          <span class="line"></span>
-          <span class="line"></span>
-          <span class="line"></span>
-      </div>
+    <div class="hamburger-lines">
+      <span class="line"></span>
+      <span class="line"></span>
+      <span class="line"></span>
+    </div>
   </div>
 </nav>
 
 <!-- Side Menu -->
-<div class="side-menu">
-  <ul>
-      <li><a href="www.google.com" target="_blank">Contact</a></li>
-  </ul>
-</div>
+{% include 'side_menu.html' %}
 
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
@@ -36,12 +33,12 @@
   const hamburger = document.querySelector('.hamburger');
 
   function toggleMenu() {
-      sideMenu.classList.toggle('active');
-      hamburger.classList.toggle('active');
+    sideMenu.classList.toggle('active');
+    hamburger.classList.toggle('active');
   }
 
   function toggleSearch() {
-      const searchElement = document.querySelector('.navsearch');
-      searchElement.classList.toggle('active');
+    const searchElement = document.querySelector('.navsearch');
+    searchElement.classList.toggle('active');
   }
 </script>
