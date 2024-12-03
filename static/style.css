@@ -3,6 +3,9 @@
     --primary-color: #740DAD;
     --secondary-color: #FF007A;
     --highlight-color: #FFFF00;
+    --navbar-height: 70px;
+    --sidebar-width: calc(20vw);
+    --sidebar-height: calc(70vh);
 }
 
 /* General Styles */
@@ -25,7 +28,7 @@ body {
   padding: 0 1rem;
   background: var(--primary-color);
   color: white;
-  height: 70px;
+  height: var(--navbar-height);
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
   position: relative;
   z-index: 2;
@@ -96,7 +99,8 @@ body {
 }
 
 .navsearch.active .searchbox {
-  width: 500px;
+  width: calc(50vw);
+  max-width: 600px;
   opacity: 1;
 }
 
@@ -167,10 +171,10 @@ body {
 .side-menu {
   position: absolute;
   border-radius: 0 50px 50px 0;
-  top: 70px;
-  left: -250px;
-  width: 150px;
-  height: calc(90vh - 70px);
+  top: calc(var(--navbar-height) + 5%);
+  left: calc(-1 * var(--sidebar-width));
+  width: var(--sidebar-width);
+  height: var(--sidebar-height);
   background-color: rgba(116, 13, 173, 0.5);
   box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.5);
   transition: all 0.4s ease-in-out;
