@@ -106,7 +106,7 @@ body {
 }
 
 .navsearch.active .searchbox {
-  width: calc(50vw);
+  width: var(--searchbox-width);
   max-width: 600px;
   opacity: 1;
 }
