@@ -14,11 +14,13 @@
   padding: 0;
   box-sizing: border-box;
 }
-/*********************************************************** NAV - BAR ***********************************************************/
+
 body {
   font-family: 'Poppins', sans-serif;
   background-color: var(--background);
 }
+
+/*********************************************************** NAV - BAR ***********************************************************/
 
 /* Navbar Styling */
 .navbar {
@@ -36,12 +38,11 @@ body {
 
 /* Logo */
 .logo {
-  width: calc(0.7 * var(--sidebar-width));
-  height: calc(0.7 *var(--navbar-height));
+  width: calc(10vw);
+  height: 100%;
   max-width: var(--navbar-height);
-  max-height: var(--navbar-height);
   padding: 0px;
-  margin: 0 0.5rem;
+  margin: 0 1vw;
   display: flex;
   align-items: center;
 }
