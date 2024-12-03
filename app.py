@@ -33,11 +33,12 @@ app.secret_key= appcfg.SECRET_KEY
 #############################################     ROUTES     ###########################################
 
 
-# Welcome Page
+# Landing Page
 @app.route('/')
 def index():
-    return render_template('welcome.html')
+    return render_template('index.html')
 
+"""
 # Login-Register Functionality.
 @app.route('/user_login',methods=["GET","POST"])
 def user_login():
@@ -623,7 +624,8 @@ def delete_album(abm):
 @app.route('/logout')
 def logout():
     session.clear()
-    return redirect(url_for("index")) 
+    return redirect(url_for("index"))
+"""
 
 
 #######################################     RUN THE APPLICATION     ####################################
