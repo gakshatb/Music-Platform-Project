@@ -169,7 +169,7 @@ body {
 .side-menu {
   display: flex;
   position: fixed;
-  border-radius: 0 50px 50px 0;
+  border-radius: 0 calc(0.2*var(--sidebar-width)) calc(0.2*var(--sidebar-width))  0;
   border: solid;
   border-color: var(--highlight-color);
   border-width: 1px;
@@ -180,22 +180,10 @@ body {
   background-color: rgba(116, 13, 173, 0.7);
   flex-direction: column;
   padding: 1rem;
+  overflow-y: auto;
   box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.5);
   transition: all 0.4s ease-in-out;
   z-index: 1;
-}
-
-.profile-section {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.profile-pic {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  margin-bottom: 1rem;
-  object-fit: cover;
 }
 
 .side-menu.active {
@@ -225,5 +213,94 @@ body {
 .side-menu ul li a:visited {
   color: var(--highlight-color);
 }
+
+.profile-section {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  align-items: center;
+  text-align: center;
+}
+
+.profile-pic {
+  width: calc(0.5*var(--sidebar-width));
+  height: calc(0.5*var(--sidebar-width));
+  border-radius: calc(0.5*var(--sidebar-width));
+  margin-bottom: 1rem;
+  object-fit: cover;
+}
+
+.username {
+  font-size: 1.2rem;
+  color: var(--highlight-color);
+}
+
+/* Dropdown Styling */
+.menu-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.menu-links li {
+  margin: 0.5rem 0;
+}
+
+.dropdown-btn {
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  text-align: left;
+  width: 100%;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+.dropdown-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-content {
+  display: none;
+  list-style: none;
+  padding-left: 1rem;
+}
+
+.dropdown-content li {
+  margin: 0.5rem 0;
+}
+
+.dropdown-content a {
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+  color: var(--highlight-color);
+}
+
+/* Toggle Dropdown on Active */
+.dropdown-btn.active + .dropdown-content {
+  display: block;
+}
+
+/* Footer Styling */
+.menu-footer {
+  margin-top: auto;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--secondary-color);
+}
+
+.menu-footer a {
+  color: var(--highlight-color);
+  text-decoration: none;
+}
+
+
+
+
 
 /**********************************************************************************************************************/
