@@ -23,7 +23,7 @@ body {
 /* Navbar Styling */
 .navbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   padding: 0 1rem;
   background: var(--primary-color);
@@ -36,10 +36,12 @@ body {
 
 /* Logo */
 .logo {
+  width: calc(0.7 * var(--sidebar-width));
+  height: calc(0.7 *var(--navbar-height));
   max-width: var(--navbar-height);
   max-height: var(--navbar-height);
-  padding: 0 0.5rem;
-  margin: 0px 5px;
+  padding: 0px;
+  margin: 0 0.5rem;
   display: flex;
   align-items: center;
 }
@@ -48,7 +50,8 @@ body {
 .brand h1 {
   color: var(--secondary-color);
   font-size: 2rem;
-  margin-left: 10px;
+  margin: 0px;
+  padding: 0px;
 }
 
 /* Center Navigation */
@@ -64,11 +67,8 @@ body {
   font-size: 1.5rem;
   color: white;
   background: transparent;
-  border: none;
-  cursor: pointer;
 }
 
-/* Increase the size of Home and Search icons */
 .navitem ion-icon {
   font-size: 2rem;
   transition: font-size 0.3s ease;
@@ -77,13 +77,6 @@ body {
 .navsearch ion-icon {
   font-size: 2rem;
   transition: font-size 0.3s ease;
-}
-
-/* Menu width adjustment */
-.navbar .menu-items {
-  width: 250px;
-  box-shadow: rgba(0, 0, 0, 0.1) 4px 0px 12px;
-  transition: transform 0.3s ease-in-out;
 }
 
 .navitem.active ion-icon {
@@ -150,18 +143,6 @@ body {
   border-radius: 5px;
   transition: all 0.4s ease-in-out;
 }
-
-.nav-container input[type="checkbox"]:checked ~ .menu-items {
-  transform: translateX(0);
-}
-
-.navbar .menu-items li {
-  margin: 1rem 0;
-  font-size: 1.5rem;
-  font-weight: 500;
-  text-align: center;
-}
-
 
 .hamburger.active .line:nth-child(1) {
   background-color: var(--highlight-color);
