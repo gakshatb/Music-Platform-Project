@@ -1,376 +1,208 @@
-:root{
-    --back-color:#121B25;
-    --button-text-color:skyblue;
-    --button-color:deepskyblue;
-    --text-color:white;
-    --danger:red;
-
+:root {
+    --background: #0D0D0D;
+    --primary-color: #740DAD;
+    --secondary-color: #FF007A;
+    --highlight-color: #FFFF00;
 }
 
-
+/* General Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/*********************************************************** NAV - BAR ***********************************************************/
 body {
-    background-image: url(background.jpg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    font-family: Arial, sans-serif;
-    min-height: 100vh;
-    margin: 0;
-    padding:0;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--background);
+}
+
+/* Navbar Styling */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  background: var(--primary-color);
+  color: white;
+  height: 70px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+  position: relative;
+  z-index: 2;
+}
+
+/* Brand Name */
+.brand h1 {
+  color: var(--secondary-color);
+  font-size: 1.5rem;
+  margin-left: 10px;
+}
+
+/* Center Navigation */
+.center-nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navitem {
+  display: grid;
+  place-content: center;
+  font-size: 1.5rem;
+  color: white;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/* Increase the size of Home and Search icons */
+.navitem ion-icon {
+  font-size: 2rem;
+  transition: font-size 0.3s ease;
+}
+
+.navsearch ion-icon {
+  font-size: 2rem;
+  transition: font-size 0.3s ease;
+}
+
+/* Menu width adjustment */
+.navbar .menu-items {
+  width: 250px;
+  box-shadow: rgba(0, 0, 0, 0.1) 4px 0px 12px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.navitem.active ion-icon {
+  color: var(--secondary-color);
+}
+
+/* Search Bar */
+.navsearch {
+  position: relative;
+  flex-grow: 1;
+}
+
+.searchbox {
+  width: 0;
+  opacity: 0;
+  transition: all 0.4s ease-in-out;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 20px;
+  border: none;
+  background: var(--background);
+  color: var(--highlight-color);
+}
+
+.navsearch.active .searchbox {
+  width: 500px;
+  opacity: 1;
+}
+
+.searchicon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  color: var(--secondary-color);
+  cursor: pointer;
+}
+
+/* Hamburger Menu */
+.hamburger {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 10px;
+  margin-right: 15px;
+}
+
+.hamburger-lines {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 20px;
+  width: 30px;
+}
+
+.hamburger-lines .line {
+  height: 4px;
+  width: 25px;
+  background-color: var(--secondary-color);
+  border-radius: 5px;
+  transition: all 0.4s ease-in-out;
+}
+
+.nav-container input[type="checkbox"]:checked ~ .menu-items {
+  transform: translateX(0);
+}
+
+.navbar .menu-items li {
+  margin: 1rem 0;
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-align: center;
 }
 
 
-h3,p,h1, h1 a,h2,h4,label {
-    color: var(--text-color);
+.hamburger.active .line:nth-child(1) {
+  background-color: var(--highlight-color);
+  transform: rotate(45deg) translate(5px, 5px);
 }
 
-
-
-
-/************************************************** General-items *******************************************************************/
-/* search-box */
-.sbox{
-    display:flex;
-    border-radius: 2rem;
-    border-style: outset;
-    align-items: center;
-    justify-content: space-between;
-    width: auto;
-    height: 45px;
+.hamburger.active .line:nth-child(2) {
+  opacity: 0;
 }
 
-
-.sbox input{
-    color: var(--text-color);
-    padding: 0.94em;
-    text-align: left;
-    width: 100%;
-    background: none;
-    margin-left:1em;
-    border: none;
+.hamburger.active .line:nth-child(3) {
+  background-color: var(--highlight-color);
+  transform: rotate(-45deg) translate(5px, -5px);
 }
 
-
-.sbox input:focus{
-    outline: none;
+/* Side Menu */
+.side-menu {
+  position: absolute;
+  border-radius: 0 50px 50px 0;
+  top: 70px;
+  left: -250px;
+  width: 150px;
+  height: calc(90vh - 70px);
+  background-color: rgba(116, 13, 173, 0.5);
+  box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.5);
+  transition: all 0.4s ease-in-out;
+  z-index: 1;
 }
 
-
-.sbox form{
-    display: contents;
+.side-menu.active {
+  left: 0;
 }
 
-
-.sbox button{
-    background: none;
-    border:none;
-    border:none;
-    cursor: pointer;
-    padding: 1.5em;
+.side-menu ul {
+  list-style: none;
+  padding: 20px;
 }
 
-
-.sbox p{
-    text-align: left;
-    padding-left: 1em;
+.side-menu ul li {
+  margin: 15px 0;
 }
 
-
-/* Card */
-.card{
-    text-align: center;
-    border: 2px solid var(--button-text-color);
-    border-radius: 2em;
-    align-self: center;
-    padding: 30px 80px;
-    margin: 1em;
-    align-self: normal;
-    box-shadow: 0 0 1em rgba(3, 62, 145, 0.4);
-    width: -webkit-fill-available;
+.side-menu ul li a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: color 0.3s;
 }
 
-
-.carddesign{
-    background: url(cardpattern.png) rgba(255, 255, 255,0.1);
-    background-position: -51em -7em;
-    background-repeat: no-repeat;
-    backdrop-filter: blur(10px);
+.side-menu ul li a:hover {
+  color: var(--highlight-color);
 }
 
-
-/* Buttons */
-#button1 {
-    background-color: var(--button-color);
-    color: var(--text-color);
-    padding: 10px 22px;
-    cursor: pointer;
-    margin: 10px;
-    border-radius: 2em;
-    text-decoration: none;
+.side-menu ul li a:visited {
+  color: var(--highlight-color);
 }
 
-
-#button2 {
-    color: var(--button-text-color);
-    background: none;
-    padding: 8px 18px;
-    cursor: pointer;
-    margin: 10px;
-    border-radius: 2em;
-    border: 2px solid var(--button-color);
-    text-decoration: none;
-}
-
-
-
-
-/************************************************** Nav-Bar ********************************************************************/
-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    
-}
-
-
-/* Style for the heading */
-h1 {
-    padding: 0 0.4em;
-}
-
-
-.header-links{
-    display: flex;
-    align-items: center;
-}
-
-
-/* Style for individual link items */
-.header-links a {
-    color: var(--button-text-color);
-    text-decoration: none;
-    cursor: pointer;
-    margin: 0 10px;
-}
-
-
-.header-links a:hover{
-    text-decoration: underline;
-}
-
-
-
-
-/************************************************************ Welcome ******************************************************/
-/* container */
-.button{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-
-
-
-/************************************************************ Login *********************************************************/
-.page{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.container {
-    width: 300px;
-    padding: 0 20px;
-    border: 2px solid var(--button-text-color);
-    box-shadow: 0 0 1em rgba(3, 62, 145, 0.4);
-    background: rgba(255, 255, 255,0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 5px;
-}
-
-
-.container h2 {
-    text-align: center;
-}
-
-
-.form-group {
-    margin: 15px 0;
-    text-align: center;
-}
-
-
-.form-group label {
-    display: block;
-}
-
-
-.form-group input {
-    width: 100%;
-    padding: 5px;
-    color: var(--text-color);
-    background:none ;
-    border: 1px solid var(--button-text-color);
-    border-radius: 5px;
-}
-
-
-.form-group input{
-    cursor: pointer;
-}
-
-
-
-
-/************************************************************ Admin **********************************************************/
-.adminpage{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    margin-top: 3%;
-}
-
-
-.adminpage .col1{
-    display: flex;
-    flex-direction: column;
-}
-
-
-.adminpage .col2{
-    display: block;
-}
-
-
-.adminpage .col2 .col2row1{
-    display: flex;
-    width: 100%;
-}
-
-
-.adminpage .col2 .col2row2{
-    width: 100%;
-}
-
-
-footer{
-    display: flex;
-    justify-content: space-around;
-}
-
-
-
-
-/************************************************ Admin-tracks & Albums ******************************************************/
-.admin_tracks .row1{
-    display: flex;
-    justify-content: space-between;
-    margin: 0 2em;
-}
-
-
-.admin_tracks .row{
-    border: 2px solid var(--button-text-color);
-    border-radius: 2em;
-    margin: 2em;
-    padding: 1em;
-    align-items: center;
-}
-
-
-.admin_tracks .row .item{
-    display: flex;
-    color: var(--text-color);
-    align-items: center;
-    margin: 1em 4em;
-    padding: 1.5em 2em;
-    justify-content: space-between;
-    box-shadow: 0 0 1em rgba(3, 62, 145, 0.4);
-    border: 2px solid var(--button-text-color);
-    border-radius: 2em;
-}
-
-
-.admin_tracks .row .item h4{
-    margin:0 auto 0 0;
-}
-
-
-
-
-/********************************************************** App-Home ********************************************************/
-.appcontent{
-    margin: 2rem;
-}
-
-
-.tracks .row{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 2em;
-}
-
-
-.tracks .song_row{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    overflow-x: auto;
-}
-
-
-
-
-/********************************************************** App-Lyrics ********************************************************/
-.card.lyrics{
-    text-align: left;
-}
-
-
-.card.lyrics .row{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-
-.musicplayer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-
-
-
-/********************************************************** app-profile ********************************************************/
-.profile{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
-
-
-.profile .picture img{
-    width: 20em;
-    height:20em;
-    margin: 2em;
-}
-
-
-
-
-/********************************************************** creator-dashboard ********************************************************/
-.creatordashboard .card.row{
-    display: block;
-    text-align: left;
-}
-
-
-.creatordashboard .card.row .col{
-    display: flex;
-    text-align: center;
-    justify-content: space-around;
-}
+/**********************************************************************************************************************/
