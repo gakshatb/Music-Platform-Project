@@ -3,9 +3,12 @@
     --primary-color: #740DAD;
     --secondary-color: #FF007A;
     --highlight-color: #FFFF00;
-    --navbar-height: 70px;
+    --navbar-height: 7vh;
     --sidebar-width: calc(20vw);
     --sidebar-height: calc(70vh);
+    --logo-size: calc(0.8 * var(--navbar-height));
+    --nav-item-size: calc(1.5rem + 1vw);
+    --searchbox-width: calc(30vw);
 }
 
 /* General Styles */
