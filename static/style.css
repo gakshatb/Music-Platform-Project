@@ -5,7 +5,7 @@
     --highlight-color: #FFFF00;
     --navbar-height: 7vh;
     --sidebar-width: calc(20vw);
-    --sidebar-height: calc(70vh);
+    --sidebar-height: calc(80vh);
     --logo-size: calc(0.8 * var(--navbar-height));
     --nav-item-size: calc(1.5rem + 1vw);
     --searchbox-width: calc(30vw);
@@ -37,13 +37,14 @@ body {
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
   position: relative;
   z-index: 2;
+  overflow: hidden;
 }
 
 /* Logo */
 .logo {
   width: calc(10vw);
   height: 100%;
-  max-width: var(--navbar-height);
+  max-width: var(--logo-size);
   padding: 0px;
   margin: 0 1vw;
   display: flex;
@@ -162,18 +163,40 @@ body {
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
+/*********************************************************** SIDE - MENU ***********************************************************/
+
 /* Side Menu */
 .side-menu {
-  position: absolute;
+  display: flex;
+  position: fixed;
   border-radius: 0 50px 50px 0;
+  border: solid;
+  border-color: var(--highlight-color);
+  border-width: 1px;
   top: calc(var(--navbar-height) + 5%);
   left: calc(-1 * var(--sidebar-width));
   width: var(--sidebar-width);
   height: var(--sidebar-height);
-  background-color: rgba(116, 13, 173, 0.5);
+  background-color: var(--primary-color);
+  opacity: 0.7;
+  flex-direction: column;
+  padding: 1rem;
   box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.5);
   transition: all 0.4s ease-in-out;
   z-index: 1;
+}
+
+.profile-section {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.profile-pic {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  object-fit: cover;
 }
 
 .side-menu.active {
@@ -182,11 +205,11 @@ body {
 
 .side-menu ul {
   list-style: none;
-  padding: 20px;
+  padding: 0;
 }
 
 .side-menu ul li {
-  margin: 15px 0;
+  margin: 1rem 0;
 }
 
 .side-menu ul li a {
