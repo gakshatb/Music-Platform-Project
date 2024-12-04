@@ -245,12 +245,9 @@ body {
 
 /* Accordion Items */
 .accordion-item {
-  padding: auto;
-  overflow: hidden;
-  border-top: var(--accordion-border-width) solid var(--accordion-border-color);
-  border: 1px solid var(--highlight-color);
   border-radius: 5px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  padding-top: 0.5%;
 }
 
 .accordion-item input {
