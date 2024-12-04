@@ -3,12 +3,12 @@
     --primary-color: #563A9C;
     --secondary-color: #8B5DFF;
     --highlight-color: #FFF7D1;
-    --navbar-height: 7vh;
-    --sidebar-width: calc(30vw);
-    --sidebar-height: calc(80vh);
-    --logo-size: calc(0.8 * var(--navbar-height));
-    --nav-item-size: calc(1.5rem + 1vw);
+    --navbar-height: 10vh;
     --searchbox-width: calc(30vw);
+    --nav-item-size: calc(1.5rem + 1vw);
+    --logo-size: calc(0.8 * var(--navbar-height));
+    --sidebar-width: calc(35vw);
+    --sidebar-height: calc(70vh);
     --transition-speed: 0.3s;
 }
 
@@ -29,13 +29,10 @@ body {
 
 /* Navbar Styling */
 .navbar {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 0 1rem;
   background: var(--primary-color);
   color: var(--background);
   height: var(--navbar-height);
+  max-height: 60px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
   position: relative;
   z-index: 2;
@@ -176,7 +173,7 @@ body {
   border: solid;
   border-color: var(--highlight-color);
   border-width: 1px;
-  top: calc(var(--navbar-height) + 5%);
+  top: calc(min(var(--navbar-height), 60px) + 5vh);
   left: calc(-1 * var(--sidebar-width));
   width: var(--sidebar-width);
   height: var(--sidebar-height);
