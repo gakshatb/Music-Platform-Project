@@ -1,8 +1,8 @@
 :root {
     --background: #0D0D0D;
-    --primary-color: #740DAD;
-    --secondary-color: #FF007A;
-    --highlight-color: #FFFF00;
+    --primary-color: #563A9C;
+    --secondary-color: #8B5DFF;
+    --highlight-color: #FFF7D1;
     --navbar-height: 7vh;
     --sidebar-width: calc(30vw);
     --sidebar-height: calc(80vh);
@@ -16,13 +16,13 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 body {
   font-family: 'Poppins', sans-serif;
   background-color: var(--background);
   scroll-behavior: smooth;
+  overflow: auto;
 }
 
 /*********************************************************** NAV - BAR ***********************************************************/
@@ -47,6 +47,7 @@ body {
   width: calc(10vw);
   height: 100%;
   max-width: var(--logo-size);
+  max-height: var(--logo-size);
   padding: 0px;
   margin: 0 1vw;
   display: flex;
@@ -179,44 +180,23 @@ body {
   left: calc(-1 * var(--sidebar-width));
   width: var(--sidebar-width);
   height: var(--sidebar-height);
-  background-color: rgba(116, 13, 173, 0.7);
+  background-color: var(--primary-color);
   flex-direction: column;
   padding: 1rem;
-  overflow-y: auto;
+  overflow-y: scroll;
   box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.5);
   transition: all var(--transition-speed) ease-in-out;
   z-index: 1;
 }
 
+.side-menu::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
 .side-menu.active {
   left: 0;
 }
-
-.side-menu ul {
-  list-style: none;
-  padding: 0;
-}
-
-.side-menu ul li {
-  margin: 1rem 0;
-}
-
-.side-menu ul li a {
-  color: var(--secondary-color);
-  text-decoration: none;
-  font-size: 1.2rem;
-  transition: all var(--transition-speed) ease;
-}
-
-.side-menu ul li a:hover {
-  color: var(--highlight-color);
-}
-
-.side-menu ul li a:visited {
-  color: var(--highlight-color);
-}
-
-
 
 .profile {
   text-align: center;
@@ -258,14 +238,19 @@ body {
 .accordion {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  padding: 1rem;
+  gap: 0.5rem;
+  padding: auto;
   background: transparent;
 }
 
 /* Accordion Items */
 .accordion-item {
+  padding: auto;
   overflow: hidden;
+  border-top: var(--accordion-border-width) solid var(--accordion-border-color);
+  border: 1px solid var(--highlight-color);
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .accordion-item input {
@@ -281,10 +266,14 @@ body {
   padding: 0.5rem;
   height: auto;
   width: auto;
-  font-size: clamp(1rem, 5vw, 1.5rem);
   color: var(--highlight-color);
   background: var(--primary-color);
   transition: all var(--transition-speed);
+  font-size: calc(0.7rem + 0.4vw);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .accordion-item label:hover {
@@ -292,7 +281,7 @@ body {
 }
 
 .accordion-item label .icon {
-  font-size: 2rem;
+  font-size: 1.2em;
   transition: transform var(--transition-speed);
 }
 
@@ -303,5 +292,41 @@ body {
 
 .accordion-item input:checked + label .icon {
   transform: rotate(45deg);
+}
+    
+/* List Styling */
+.accordion-item ul {
+  list-style: none;
+  max-height: 0;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  width: auto;
+  transition: max-height var(--transition-speed) ease;
+  background: var(--primary-color);
+  text-align: center;
+}
+
+.accordion-item ul li{
+  padding: 2px;
+  margin: 1px;
+  text-align: center;
+  color: var(--highlight-color);
+  width: auto;
+}
+
+.accordion-item ul li a {
+  width: auto;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: all var(--transition-speed) ease;
+  font-size: calc(0.8rem + 0.4vw);
+  background: var(--primary-color);
+  color: var(--highlight-color);
+  display: flex;
+}
+
+.accordion-item ul li :hover {
+  background-color: var(--secondary-color);
 }
 /**********************************************************************************************************************/
