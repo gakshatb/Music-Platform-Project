@@ -247,7 +247,7 @@ body {
 .accordion-item {
   border-radius: 5px;
   overflow: hidden;
-  padding-top: 0.5%;
+  padding-top: 0.3%;
 }
 
 .accordion-item input {
@@ -285,6 +285,10 @@ body {
 /* Toggle Behavior */
 .accordion-item input:checked + label + ul {
   max-height: 100vh;
+}
+
+.accordion-item input:not(:checked) + label + ul {
+  max-height: 0;
 }
 
 .accordion-item input:checked + label .icon {
