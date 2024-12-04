@@ -24,8 +24,23 @@
 </nav>
 
 <!-- Side Menu -->
-{% include 'side_menu.html' %}
+<div class="side-menu">
+  <!-- Profile Section -->
+   <div class="profile">
+    <img src="{{url_for('static', filename='default_user.jpg')}}" alt="User">
+    <h2>User Name</h2>
+  </div>
 
+  <div class="accordion">
+    {% include 'side_menu.html' %}
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    App Version 1.0.0 <br>
+    Powered by Resonix
+  </div>
+</div>
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 <script>

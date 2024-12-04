@@ -1,53 +1,14 @@
-<!-- Side Menu -->
-<div class="side-menu">
-  <!-- Profile Section -->
-  <div class="profile-section">
-    <img src="{{ url_for('static', filename='default_user.jpg') }}" alt="User Profile" class="profile-pic" />
-    <p class="username">John Doe</p>
-  </div>
-
-  <!-- Dropdown Menu -->
-  <nav class="menu-links">
-    <ul>
-      <li>
-        <button class="dropdown-btn">Navigation</button>
-        <ul class="dropdown-content">
-          <li><a href="/home">Home</a></li>
-          <li><a href="/browse">Browse</a></li>
-          <li><a href="/favorites">Favorites</a></li>
-          <li><a href="/playlists">Playlists</a></li>
-          <li><a href="/history">History</a></li>
-        </ul>
-      </li>
-      <li>
-        <button class="dropdown-btn">Quick Actions</button>
-        <ul class="dropdown-content">
-          <li><a href="/add-song">Add Song</a></li>
-          <li><a href="/create-playlist">Create Playlist</a></li>
-        </ul>
-      </li>
-      <li>
-        <button class="dropdown-btn">Settings</button>
-        <ul class="dropdown-content">
-          <li><a href="/equalizer">Equalizer</a></li>
-          <li><a href="/themes">Themes</a></li>
-        </ul>
-      </li>
-      <li>
-        <button class="dropdown-btn">External Links</button>
-        <ul class="dropdown-content">
-          <li><a href="/about">About Us</a></li>
-          <li><a href="/help">Help</a></li>
-          <li><a href="/contact">Contact</a></li>
-        </ul>
-      </li>
-    </ul>
-  </nav>
-
-  <!-- Footer -->
-  <footer class="menu-footer">
-    <p>App Version 1.0.0</p>
-    <p>Powered by Your Company</p>
-    <a href="/feedback">Give Feedback</a>
-  </footer>
+<!-- Navigation -->
+<div class="accordion-item">
+  <input type="checkbox" id="nav">
+  <label for="nav">
+    Navigation
+    <span class="icon">+</span>
+  </label>
+  <ul>
+    <li>-<a href="#">Home</a></li>
+    <li>-<a href="#">Browse</a></li>
+    <li>-<a href="#">Favorites</a></li>
+    <li>-<a href="#">Playlists</a></li>
+  </ul>
 </div>
