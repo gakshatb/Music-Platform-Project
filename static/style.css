@@ -20,7 +20,9 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  background-color: var(--background);
+  background: var(--background);
+  color: var(--highlight-color);
+  transition: all var(--transition-speed) ease;
   scroll-behavior: smooth;
   overflow: auto;
 }
@@ -359,6 +361,58 @@ ion-icon[name="home"] {
 .accordion-item ul li :hover {
   background-color: var(--secondary-color);
 }
+
+/*********************************************************** THEME ***********************************************************/
+
+/* Theme Variables */
+[data-theme="default"] {
+  --background: #0d0d0d;
+  --primary-color: #563a9c;
+  --secondary-color: #8b5dff;
+  --highlight-color: #fff7d1;
+}
+
+[data-theme="dark"] {
+  --background: #121212;
+  --primary-color: #282828;
+  --secondary-color: #3d3d3d;
+  --highlight-color: #ffffff;
+}
+
+[data-theme="light"] {
+  --background: #ffffff;
+  --primary-color: #f5f5f5;
+  --secondary-color: #e0e0e0;
+  --highlight-color: #000000;
+}
+
+.accordion-item ul li label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding: 0.5rem;
+  height: auto;
+  width: auto;
+  color: var(--highlight-color);
+  background: var(--primary-color);
+  transition: all var(--transition-speed);
+  font-size: calc(0.8rem + 0.4vw);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-radius: 10px;
+}
+.accordion-item ul li label:hover {
+  background: var(--secondary-color);
+}
+
+/* Input Styling for Radio Buttons */
+.accordion-item ul li input[type="radio"] {
+  display: none;
+}
+
 /**********************************************************************************************************************/
 
 .img {

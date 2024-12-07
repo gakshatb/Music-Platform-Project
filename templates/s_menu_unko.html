@@ -1,93 +1,120 @@
 <!-- Side Menu -->
 <div class="side-menu">
-    <!-- Profile Section -->
-     <div class="profile">
-      <img src="{{url_for('static', filename='default_user.jpg')}}" alt="User">
-      <h2>Welcome!!!</h2>
+  <!-- Profile Section -->
+  <div class="profile">
+    <img src="{{url_for('static', filename='default_user.jpg')}}" alt="User" />
+    <h2>Welcome!!!</h2>
+  </div>
+  <div class="accordion">
+    <!-- Home -->
+    <div class="accordion-item">
+      <input type="radio" name="accordion" id="home" />
+      <label for="home">
+        Home
+        <span class="icon">+</span>
+      </label>
+      <ul>
+        <li><a href="#">- Welcome</a></li>
+        <li><a href="#">- Latest Updates</a></li>
+      </ul>
     </div>
-    <div class="accordion">
-        <!-- Home -->
-        <div class="accordion-item">
-            <input type="radio" name="accordion" id="home">
-            <label for="home">
-            Home
-            <span class="icon">+</span>
-            </label>
-            <ul>
-            <li><a href="#">- Welcome</a></li>
-            <li><a href="#">- Latest Updates</a></li>
-            </ul>
-        </div>
-        
-        <!-- Browse Content -->
-        <div class="accordion-item">
-            <input type="radio" name="accordion" id="browse-content">
-            <label for="browse-content">
-            Browse
-            <span class="icon">+</span>
-            </label>
-            <ul>
-            <li><a href="#">- Songs</a></li>
-            <li><a href="#">- Articles</a></li>
-            <li><a href="#">- Playlists</a></li>
-            </ul>
-        </div>
-        
-        <!-- Sign Up -->
-        <div class="accordion-item">
-            <input type="radio" name="accordion" id="sign-up">
-            <label for="sign-up">
-            Sign Up
-            <span class="icon">+</span>
-            </label>
-            <ul>
-            <li><a href="#">- Log In</a></li>
-            <li><a href="#">- Sign Up</a></li>
-            </ul>
-        </div>
-        
-        <!-- Help & Support -->
-        <div class="accordion-item">
-            <input type="radio" name="accordion" id="help-support">
-            <label for="help-support">
-            Help & Support
-            <span class="icon">+</span>
-            </label>
-            <ul>
-            <li><a href="#">- FAQ</a></li>
-            <li><a href="#">- Contact Support</a></li>
-            </ul>
-        </div>
-        
-        <!-- About Us -->
-        <div class="accordion-item">
-            <input type="radio" name="accordion" id="about-us">
-            <label for="about-us">
-            About Us
-            <span class="icon">+</span>
-            </label>
-            <ul>
-            <li><a href="#">- Learn More About Us</a></li>
-            <li><a href="#">- Our Mission</a></li>
-            </ul>
-        </div>
-        
-        <!-- Contact Us -->
-        <div class="accordion-item">
-            <input type="radio" name="accordion" id="contact-us">
-            <label for="contact-us">
-            Contact Us
-            <span class="icon">+</span>
-            </label>
-            <ul>
-            <li><a href="#">- Email Us</a></li>
-            <li><a href="#">- Support Page</a></li>
-            </ul>
-        </div>
+
+    <!-- Browse Content -->
+    <div class="accordion-item">
+      <input type="radio" name="accordion" id="browse-content" />
+      <label for="browse-content">
+        Browse
+        <span class="icon">+</span>
+      </label>
+      <ul>
+        <li><a href="#">- Songs</a></li>
+        <li><a href="#">- Articles</a></li>
+        <li><a href="#">- Playlists</a></li>
+      </ul>
     </div>
-    <!-- Footer -->
-    <div class="footer">
-        App Version 1.0.0 <br>
-        Powered by Resonix
+
+    <!-- Change Theme -->
+    <div class="accordion-item">
+      <input type="radio" name="accordion" id="theme" />
+      <label for="theme">
+        Theme
+        <span class="icon">+</span>
+      </label>
+      <ul>
+        <li>
+          <input type="radio" name="theme" id="theme-default" />
+          <label for="theme-default">Default</label>
+        </li>
+        <li>
+          <input type="radio" name="theme" id="theme-dark" />
+          <label for="theme-dark">Dark</label>
+        </li>
+        <li>
+          <input type="radio" name="theme" id="theme-light" />
+          <label for="theme-light">Light</label>
+        </li>
+        <li>
+          <input type="radio" name="theme" id="theme-neon" />
+          <label for="theme-light">Neon</label>
+        </li>
+      </ul>
     </div>
+
+    <!-- Help & Support -->
+    <div class="accordion-item">
+      <input type="radio" name="accordion" id="help-support" />
+      <label for="help-support">
+        Help & Support
+        <span class="icon">+</span>
+      </label>
+      <ul>
+        <li><a href="#">- FAQ</a></li>
+        <li><a href="#">- Contact Support</a></li>
+      </ul>
+    </div>
+
+    <!-- About Us -->
+    <div class="accordion-item">
+      <input type="radio" name="accordion" id="about-us" />
+      <label for="about-us">
+        About Us
+        <span class="icon">+</span>
+      </label>
+      <ul>
+        <li><a href="#">- Learn More About Us</a></li>
+        <li><a href="#">- Our Mission</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Us -->
+    <div class="accordion-item">
+      <input type="radio" name="accordion" id="contact-us" />
+      <label for="contact-us">
+        Contact Us
+        <span class="icon">+</span>
+      </label>
+      <ul>
+        <li><a href="#">- Email Us</a></li>
+        <li><a href="#">- Support Page</a></li>
+      </ul>
+    </div>
+
+    <!-- Sign Up -->
+    <div class="accordion-item">
+      <input type="radio" name="accordion" id="sign-up" />
+      <label for="sign-up">
+        Sign Up
+        <span class="icon">+</span>
+      </label>
+      <ul>
+        <li><a href="#">- Log In</a></li>
+        <li><a href="#">- Sign Up</a></li>
+      </ul>
+    </div>
+  </div>
+  <!-- Footer -->
+  <div class="footer">
+    App Version 1.0.0 <br />
+    Powered by Resonix
+  </div>
 </div>

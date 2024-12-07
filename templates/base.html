@@ -16,5 +16,26 @@
     {% endblock %}
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          const themeSwitcher = document.querySelectorAll(
+            ".accordion-item ul li input"
+          );
+      
+          // Load saved theme from localStorage
+          const savedTheme = localStorage.getItem("theme") || "default";
+          document.documentElement.setAttribute("data-theme", savedTheme);
+          document.getElementById(`theme-${savedTheme}`).checked = true;
+      
+          // Add event listener to theme switcher inputs
+          themeSwitcher.forEach((input) => {
+            input.addEventListener("change", (e) => {
+              const selectedTheme = e.target.id.replace("theme-", "");
+              document.documentElement.setAttribute("data-theme", selectedTheme);
+              localStorage.setItem("theme", selectedTheme);
+            });
+          });
+        });
+    </script>
 </body>
 </html>
