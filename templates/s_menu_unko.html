@@ -1,6 +1,6 @@
 {% extends 'side_menu.html' %}
 {% block img %}
-  {{ url_for('static', filename='default_avatar.png') }}
+{{ url_for('static', filename='profiles/default_avatar.png' )}}
 {% endblock %}
 {% block name %}Guest{% endblock %}
 {% block home_menu %}
@@ -27,8 +27,8 @@
       <span class="icon">+</span>
     </label>
     <ul>
-      <li><a href="#">- Log In</a></li>
-      <li><a href="#">- Sign Up</a></li>
+      <li><a href="/login">- Log In</a></li>
+      <li><a href="/register">- Sign Up</a></li>
     </ul>
   </div>
 {% endblock %}

@@ -386,24 +386,65 @@ ion-icon[name="home"] {
   --highlight-color: #000000;
 }
 
-.accordion-item ul li label {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0;
-  padding: 0.5rem;
-  height: auto;
-  width: auto;
-  color: var(--highlight-color);
-  background: var(--primary-color);
-  transition: all var(--transition-speed);
-  font-size: calc(0.8rem + 0.4vw);
-  text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  border-radius: 10px;
+[data-theme="greendarkgray"] {
+  --background: #121212;
+  --primary-color: #1DB954;
+  --secondary-color: #B3B3B3;
+  --highlight-color: #23FF75;
 }
+
+[data-theme="deeppurple"] {
+  --background: #0D0D0D;
+  --primary-color: #6A0DAD;
+  --secondary-color: #FF007A;
+  --highlight-color: #00FFFF;
+}
+
+[data-theme="royalblue"] {
+  --background: #181818;
+  --primary-color: #4169E1;
+  --secondary-color: #F7E600;
+  --highlight-color: #FFFFFF;
+}
+
+[data-theme="orangecharcoal"] {
+  --background: #222222;
+  --primary-color: #FF4500;
+  --secondary-color: #F4F1DE;
+  --highlight-color: #FFD700;
+}
+[data-theme="tealpeach"] {
+  --background: #202020;
+  --primary-color: #008080;
+  --secondary-color: #FFDAB9;
+  --highlight-color: #9FE2BF;
+}
+
+[data-theme="magentablack"] {
+  --background: #0B0B0B;
+  --primary-color: #FF00FF;
+  --secondary-color: #FAFAFA;
+  --highlight-color: #1E90FF;
+}
+
+[data-theme="darkolivecream"] {
+  --background: #101010;
+  --primary-color: #556B2F;
+  --secondary-color: #F5F5DC;
+  --highlight-color: #FFFF00;
+}
+
+.accordion-item ul li label {
+  width: auto;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: all var(--transition-speed) ease;
+  font-size: calc(0.8rem + 0.4vw);
+  background: var(--primary-color);
+  color: var(--highlight-color);
+  display: flex;
+}
+
 .accordion-item ul li label:hover {
   background: var(--secondary-color);
 }
