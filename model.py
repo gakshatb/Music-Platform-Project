@@ -11,11 +11,12 @@ con=sqlite3.connect(data.DATABASE)
 con.execute('''
 CREATE TABLE IF NOT EXISTS User (
     user_id INTEGER PRIMARY KEY AUTOINCREMENT, 
-    user_name TEXT NOT NULL,
+    username TEXT NOT NULL,
     name TEXT NOT NULL, 
     email TEXT NOT NULL, 
     phone_number TEXT NOT NULL, 
     password TEXT NOT NULL,
+    avatar TEXT NOT NULL DEFAULT ('default_avatar.png'),
     is_admin BOOLEAN DEFAULT (FALSE)
 );''')
 
