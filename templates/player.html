@@ -1,0 +1,19 @@
+<div class="audio-player">
+    <div class="audio-img">
+        <img src="{{ url_for('static', filename='cover/default_cover.png' )}}" alt="Cover" />
+    </div>
+    <div class="audio-title">
+        <span id="song-name">Song Name </span>
+        <span id="artist-name">Artist Name</span>
+    </div>
+    <div class="audio-controls">
+        <div class="action">
+        <button onclick="playAudio()">▶</button>
+        <button onclick="pauseAudio()">⏸</button>
+        </div>
+        <div class="progress">
+        <input type="range" id="progress" value="0" min="0" max="100" />
+        </div>
+    </div>
+    <audio id="audio" src="{{ url_for('static', filename='music/sample.mp3' )}}"></audio>
+</div>
