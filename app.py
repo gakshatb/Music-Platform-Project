@@ -4,13 +4,13 @@
 # Module Importing
 from model import * 
 from config import appconfig as appcfg
-from config import dataconfig as data
+from config import dataconfig as database
 
 
 import os
 import json
 import difflib
-from flask import Flask, render_template, request,redirect, url_for, flash, session, jsonify
+from flask import Flask, render_template, request,redirect, url_for, flash, session, jsonify, abort
 
 
 # Use the Agg backend to avoid the main thread issue
@@ -30,47 +30,60 @@ app=Flask(__name__, template_folder="templates")
 app.secret_key= appcfg.SECRET_KEY
 
 
-#############################################     ROUTES     ###########################################
-
+#############################################     LOGIN-REGISTRATION-LOGOUT     ###########################################
 
 # Landing Page
-@app.route('/')
+@app.route('/', methods=['GET'])
 def index():
-    return render_template('index.html')
-
-"""
-# Login-Register Functionality.
-@app.route('/user_login',methods=["GET","POST"])
-def user_login():
-    if request.method=='POST':
-        name=request.form['username'].strip()
-        password=request.form['password'].strip()
-        con=sqlite3.connect(data.DATABASE)
+    username = session.get('username', None)
+    if username:
+        con=sqlite3.connect(database.DATABASE)
         con.row_factory=sqlite3.Row
         cur=con.cursor()
-        cur.execute("select * from user where name=? and pwd=?",(name,password))
-        data=cur.fetchone()
+        cur.execute("select * from user where username=?",(username,))
+        user=cur.fetchone()
+        con.close()
+        return render_template('index.html', user=user)
+    return render_template('index.html', user=None)
 
+
+# Login Functionality.
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if session.get('username', None):
+        return redirect('/')
+    if request.method == 'POST':
+        username = request.form['username'].strip()
+        password = request.form['password'].strip()
+        con=sqlite3.connect(database.DATABASE)
+        con.row_factory=sqlite3.Row
+        cur=con.cursor()
+        cur.execute("select * from user where username=? and password=?",(username, password))
+        data=cur.fetchone()
+        con.close()
         if data:
-            session["name"]=data["name"]
-            session["pwd"]=data["pwd"]
-            nm=name
-            return redirect(url_for("test", nm=name))
+            session["username"] = data["username"]
+            session["user_id"] = data["user_id"]
+            flash('Login successful!', 'success')
+            return redirect('/')
         else:
-            flash("Username and Password Mismatch")
-    return render_template("user_login.html")    
+            flash('Invalid credentials. Please try again.', 'danger')
+            return redirect('/login')
+    if request.method == 'GET':
+        return render_template('login.html')
+    abort(404)
 
 
 @app.route('/register',methods=['GET','POST'])
 def register():
-    if request.method=='POST':   
+    if request.method=='POST':
         try:
-            name=request.form['name'].strip()
-            address=request.form['address'].strip().lower()
-            contact=request.form['contact'].strip()
-            pwd=request.form['pwd'].strip()
-            con=sqlite3.connect(data.DATABASE)
-            cur=con.cursor()
+            name = request.form['name'].strip()
+            contact = request.form['contact'].strip()
+            pwd = request.form['pwd'].strip()
+            address = request.form['address'].strip()
+            con = sqlite3.connect(data.DATABASE)
+            cur = con.cursor()
 
             cur.execute("select * from user where name=? and address=?",(name,address))
             data=cur.fetchone()
@@ -84,20 +97,29 @@ def register():
 
         except sqlite3.Error as e:
             flash("SQLite error: " + str(e))
-
         except Exception as e:
             flash("Error: " + str(e))
-            
         finally:
-            return redirect(url_for("user_login"))
-            con.close()
-            
-    return render_template('user_register.html') 
-####################################################################################
+            if con:
+                con.close()
+            return redirect("/")            
+    if request.method=='GET':
+        return render_template('register.html')
+    abort(404) 
+
+
+# Logout Functionality.
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect("/")
+
+
+##########################################################################################
 
 
 
-
+"""
 ############################### Main Application ###################################
 # Home Page
 @app.route("/app/<nm>")
@@ -621,10 +643,6 @@ def delete_album(abm):
         return redirect(url_for('admin_albums'))
 ###########################################################################    
 
-@app.route('/logout')
-def logout():
-    session.clear()
-    return redirect(url_for("index"))
 """
 
 
