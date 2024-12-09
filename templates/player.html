@@ -1,19 +1,46 @@
-<div class="audio-player">
-    <div class="audio-img">
-        <img src="{{ url_for('static', filename='cover/default_cover.png' )}}" alt="Cover" />
-    </div>
-    <div class="audio-title">
-        <span id="song-name">Song Name </span>
+<div class="music-player-bar">
+    <div class="song-info">
+      <img src="{{ url_for('static', filename='cover/default_cover.png') }}" alt="Cover" class="cover" />
+      <div class="details">
+        <span id="song-name">Song Name</span>
         <span id="artist-name">Artist Name</span>
+      </div>
+      <a href="#" class="like-button">
+        <ion-icon id="like-icon" name="heart-outline"></ion-icon>
+      </a>
     </div>
-    <div class="audio-controls">
-        <div class="action">
-        <button onclick="playAudio()">▶</button>
-        <button onclick="pauseAudio()">⏸</button>
-        </div>
-        <div class="progress">
+    <div class="music-player">
+      <div class="music-controls">
+        <a id="shuffle-btn" class="control-btn">
+          <ion-icon name="shuffle"></ion-icon>
+        </a>
+        <a id="prev-btn" class="control-btn">
+          <ion-icon name="play-skip-back"></ion-icon>
+        </a>
+        <a id="play-btn" class="control-btn">
+          <ion-icon id="play-icon" name="play"></ion-icon>
+        </a>
+        <a id="pause-btn" class="control-btn" style="display: none;">
+          <ion-icon name="pause"></ion-icon>
+        </a>
+        <a id="next-btn" class="control-btn">
+          <ion-icon name="play-skip-forward"></ion-icon>
+        </a>
+        <a id="repeat-btn" class="control-btn">
+          <ion-icon name="repeat"></ion-icon>
+        </a>
+      </div>
+      <div class="player-bar">
+        <div class="progress-time">0:00</div>
         <input type="range" id="progress" value="0" min="0" max="100" />
-        </div>
+        <div class="progress-time">3:45</div>
+      </div>
     </div>
-    <audio id="audio" src="{{ url_for('static', filename='music/sample.mp3' )}}"></audio>
+    <div class="volume-bar">
+      <a id="volume-btn" class="control-btn">
+        <ion-icon name="volume-high"></ion-icon>
+      </a>
+      <input type="range" id="volume" value="100" min="0" max="100" />
+    </div>
+    <audio id="audio" src="{{ url_for('static', filename='music/sample.mp3') }}"></audio>
 </div>

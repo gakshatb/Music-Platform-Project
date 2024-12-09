@@ -462,7 +462,7 @@ ion-icon[name="home"] {
 
 .music-player-bar {
   position: fixed;
-  bottom: 100px;
+  bottom: 0;
   left: 0;
   width: 100%;
   height: var(--navbar-height);
@@ -470,13 +470,16 @@ ion-icon[name="home"] {
   color: var(--highlight-color);
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 5px 10px;
+  gap: 10px;
 }
 
 .song-info {
   display: flex;
   align-items: center;
   width: auto;
+  max-width: 30vw;
 }
 
 .cover {
@@ -488,7 +491,7 @@ ion-icon[name="home"] {
 
 .details {
   display: flex;
-  margin: 0px 10px;
+  margin: 0px 5px;
   flex-direction: column;
   width: 100%;
   overflow: hidden;
@@ -508,7 +511,7 @@ ion-icon[name="home"] {
 }
 
 .like-button {
-  font-size: 1.8rem;
+  font-size: 1.2rem;
   color: var(--highlight-color);
   transition: all var(--transition-speed) ease;
 }
@@ -523,7 +526,7 @@ ion-icon[name="home"] {
   align-items: center;
   flex-direction: column;
   align-items: center;
-  width: 50vw;
+  width: 40vw;
   height: calc(0.8 * var(--navbar-height));
 }
 
@@ -534,7 +537,7 @@ ion-icon[name="home"] {
   justify-content: center;
   width: 100%;
   height: calc(0.4 * var(--navbar-height));
-  gap: 10px;
+  gap: 5px;
 }
 
 .control-btn {
@@ -549,7 +552,7 @@ ion-icon[name="home"] {
   transform: scale(1.2);
 }
 
-.progress-bar {
+.player-bar {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -560,16 +563,28 @@ ion-icon[name="home"] {
 
 .progress-time {
   font-size: 12px;
-  width: 5vw;
+  width: 10vw;
+  margin: 0;
+  padding: 5px;
   height: calc(0.4 * var(--navbar-height));
   text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 #progress {
   width: 40vw;
   height: calc(0.4 * var(--navbar-height));
-  margin: 0 5px;
+  margin: 0;
   accent-color: var(--highlight-color);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
+
+/*********************************************************** MAIN ***********************************************************/
+
+
 
 /**********************************************************************************************************************/
