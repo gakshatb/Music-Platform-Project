@@ -62,10 +62,11 @@ CREATE TABLE IF NOT EXISTS Rating (
 
 con.execute('''
 CREATE TABLE IF NOT EXISTS Playlist (
-    playlist_id INTEGER PRIMARY KEY, 
-    user_id INTEGER NOT NULL, 
-    name TEXT NOT NULL, 
-    description TEXT, 
+    playlist_id INTEGER PRIMARY KEY,
+    user_id INTEGER NOT NULL,
+    name TEXT NOT NULL,
+    description TEXT,
+    playlist TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
     FOREIGN KEY (user_id) REFERENCES User(user_id)
 );''')
