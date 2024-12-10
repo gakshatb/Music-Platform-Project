@@ -1,10 +1,20 @@
 <div class="library">
-    <div class="lib_login">
-        <div class="lib_login-title">
-            <span>To Track Your Music</span>
+    <div style="filter: blur(10px); pointer-events: none;">
+        <div class="library-icon">
+            <span>Library</span>
+            <a href="#">
+                <ion-icon name="add"></ion-icon>
+            </a>
         </div>
-        <div class="lib_login-button">
-            <a href="/login">Login</a>
+        <div class="librarySearch">
+            <div class="searchicon" onclick="librarySearch()">
+                <ion-icon name="search"></ion-icon>
+            </div>
+            <input class="searchbox" type="text" placeholder="Search...." />
         </div>
+    </div>
+    <div class="liblogin">
+        <a class="button" href="/login">Login</a>
+        <a class="button" href="/register">Register</a>
     </div>
 </div>
