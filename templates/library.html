@@ -1,9 +1,92 @@
 <div class="library">
-    <h1>Library</h1><br>
-    <h1>Library</h1><br>
-    <h1>Library</h1><br>
-    <h1>Library</h1><br>
-    <h1>Library</h1><br>
-    <h1>Library</h1><br>
-    <h1>Library</h1><br>
+  <div class="library-icon">
+    <span>Library</span>
+    <a href="#">
+      <ion-icon name="add"></ion-icon>
+    </a>
+  </div>
+  <div class="librarySearch">
+    <div class="searchicon" onclick="librarySearch()">
+      <ion-icon name="search"></ion-icon>
+    </div>
+    <input class="searchbox" type="text" placeholder="Search...." />
+  </div>
+  <div class="playlist">
+    <div class="playlist-item">
+      <img src="{{ url_for('static', filename='cover/liked_song.png') }}" alt="playlist" />
+      <a href="#"> Liked Songs </a>
+    </div>
+    <div class="playlist-item">
+      <img src="{{ url_for('static', filename='cover/liked_song.png') }}" alt="playlist" />
+      <a href="#"> Liked Songs </a>
+    </div>
+    <div class="playlist-item">
+      <img src="{{ url_for('static', filename='cover/liked_song.png') }}" alt="playlist" />
+      <a href="#"> Liked Songs </a>
+    </div>
+    <div class="playlist-item">
+      <img src="{{ url_for('static', filename='cover/liked_song.png') }}" alt="playlist" />
+      <a href="#"> Liked Songs </a>
+    </div>
+    <div class="playlist-item">
+      <img src="{{ url_for('static', filename='cover/liked_song.png') }}" alt="playlist" />
+      <a href="#"> Liked Songs </a>
+    </div>
+    <div class="playlist-item">
+      <img src="{{ url_for('static', filename='cover/liked_song.png') }}" alt="playlist" />
+      <a href="#"> Liked Songs </a>
+    </div>
+    <div class="playlist-item">
+      <img src="{{ url_for('static', filename='cover/liked_song.png') }}" alt="playlist" />
+      <a href="#"> Liked Songs </a>
+    </div>
+    <div class="playlist-item">
+      <img src="{{ url_for('static', filename='cover/liked_song.png') }}" alt="playlist" />
+      <a href="#"> Liked Songs </a>
+    </div>
+    <div class="playlist-item">
+      <img src="{{ url_for('static', filename='cover/liked_song.png') }}" alt="playlist" />
+      <a href="#"> Liked Songs </a>
+    </div>
+    <div class="playlist-item">
+      <img src="{{ url_for('static', filename='cover/liked_song.png') }}" alt="playlist" />
+      <a href="#"> Liked Songs </a>
+    </div>
+    <div class="playlist-item">
+      <img src="{{ url_for('static', filename='cover/liked_song.png') }}" alt="playlist" />
+      <a href="#"> Liked Songs </a>
+    </div>
+    <div class="playlist-item">
+      <img src="{{ url_for('static', filename='cover/liked_song.png') }}" alt="playlist" />
+      <a href="#"> Liked Songs </a>
+    </div>
+    <div class="playlist-item">
+      <img src="{{ url_for('static', filename='cover/liked_song.png') }}" alt="playlist" />
+      <a href="#"> Liked Songs </a>
+    </div>
+    <div class="playlist-item">
+      <img src="{{ url_for('static', filename='cover/liked_song.png') }}" alt="playlist" />
+      <a href="#"> Liked Songs </a>
+    </div>
+    <div class="playlist-item">
+      <img src="{{ url_for('static', filename='cover/liked_song.png') }}" alt="playlist" />
+      <a href="#"> Liked Songs </a>
+    </div>
+    <div class="playlist-item">
+      <img src="{{ url_for('static', filename='cover/liked_song.png') }}" alt="playlist" />
+      <a href="#"> Liked Songs </a>
+    </div>
+    {% for playlist in playlists %}
+    <div class="playlist-item">
+      <img src="{{ playlist.image }}" alt="playlist" />
+      <a href="{{ playlist.url }}"> {{ playlist.name }} </a>
+    </div>
+    {% endfor %}
+  </div>
 </div>
+<script>
+  function librarySearch() {
+    const searchElement = document.querySelector(".librarySearch");
+    searchElement.classList.toggle("active");
+  }
+</script>

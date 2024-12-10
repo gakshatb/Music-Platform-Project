@@ -13,7 +13,11 @@
     {% include 'header.html' %}
     <div class="main-content" {% if user %} style="height: calc(100vh - 2*var(--navbar-height));"{% endif %}>
       <div class="main-content-left">
+        {% if user %}
         {% include 'library.html' %}
+        {% else %}
+        {% include 'lib_login.html' %}
+        {% endif %}
       </div>
       <div class="main-content-right">
         {% block content %} {% endblock %}

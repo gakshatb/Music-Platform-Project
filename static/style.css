@@ -3,7 +3,7 @@
   --primary-color: #563a9c;
   --secondary-color: #8b5dff;
   --highlight-color: #fff7d1;
-  --navbar-height: min(10vh, 60px);
+  --navbar-height: min(10vh, 80px);
   --searchbox-width: calc(30vw);
   --nav-item-size: calc(1.5rem + 1vw);
   --logo-size: calc(0.6 * var(--navbar-height));
@@ -586,23 +586,20 @@ ion-icon[name="home"] {
   align-items: center;
   width: 100vw;
   height: calc(100vh - 1*var(--navbar-height));
+  overflow: hidden;
 }
 
 .main-content-left, .main-content-right {
   margin: 0;
   padding: 5px;
-  width: 45vw;
+  width: 35vw;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  border: solid;
-  border-color: var(--secondary-color);
-  border-width: 2px;
   background: var(--primary-color);
   color: var(--highlight-color);
-  overflow: hidden;
 }
 
 .main-content-right {
@@ -612,22 +609,20 @@ ion-icon[name="home"] {
 /*********************************************************** LIBRARY ***********************************************************/
 
 .library{
-  margin: 0;
-  padding: 5px;
   width: 100%;
   height: 100%;
+  padding: 10px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  text-align: center;
+  gap: 5px;
   color: var(--highlight-color);
   border: solid;
-  border-color: black;
-  border-width: 10px;
+  border-color: var(--secondary-color);
+  border-width: 5px;
+  border-radius: 20px;
   background: var(--primary-color);
   color: var(--highlight-color);
-  overflow-y: scroll;
+  overflow: hidden;
 }
 
 .library::-webkit-scrollbar {
@@ -635,4 +630,85 @@ ion-icon[name="home"] {
   height: 0px;
 }
 
+.library-icon {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 5px;
+  height: var(--navbar-height);
+  justify-content: space-between;
+}
+
+.library-icon ion-icon, span {
+  font-size: 2rem;
+  color: var(--highlight-color);
+}
+
+.librarySearch {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.librarySearch.active .searchbox {
+  width: 100%;
+  max-width: 400px;
+  opacity: 1;
+}
+
+.playlist {
+  width: 100%;
+  height: auto;
+  padding: 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 5px;
+  overflow-y: scroll;
+}
+
+.playlist::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+.playlist-item {
+  width: 100%;
+  height: var(--navbar-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+.playlist-item:hover {
+  cursor: pointer;
+  border: solid;
+  border-color: var(--highlight-color);
+  border-width: 5px;
+  border-radius: 20px;
+  background: var(--secondary-color);
+}
+
+.playlist-item img{
+  width: calc(0.8 * var(--navbar-height));
+  height: calc(0.8 * var(--navbar-height));
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.playlist-item a{
+  width: 100%;
+  height: calc(0.8 * var(--navbar-height));
+  text-decoration: none;
+  color: var(--highlight-color);
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 /**********************************************************************************************************************/

@@ -53,7 +53,7 @@ def login():
     if session.get('username', None):
         return redirect('/')
     if request.method == 'POST':
-        username = request.form['username'].strip()
+        username = request.form['username'].strip().lower()
         password = request.form['password'].strip()
         con=sqlite3.connect(database.DATABASE)
         con.row_factory=sqlite3.Row
