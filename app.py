@@ -1,6 +1,4 @@
 ######################################     IMPORT LIBRARIES     ########################################
-
-
 # Module Importing
 from model import * 
 from config import appconfig as appcfg
@@ -90,29 +88,26 @@ def register():
     if request.method=='POST':
         try:
             name = request.form['name'].strip()
-            contact = request.form['contact'].strip()
-            pwd = request.form['pwd'].strip()
-            address = request.form['address'].strip()
-            con = sqlite3.connect(data.DATABASE)
+            username = request.form['username'].strip().lower()
+            email = request.form['email'].strip().lower()
+            number = request.form['number'].strip().lower()
+            password = request.form['password'].strip()
+            con = sqlite3.connect(database.DATABASE)
             cur = con.cursor()
-
-            cur.execute("select * from user where name=? and address=?",(name,address))
+            cur.execute("select * from user where username=? or email=? or phone_number=?",(username,email,number))
             data=cur.fetchone()
-    
             if data:  
                 flash("Record already Exists") 
             else:  
-                cur.execute("insert into user(name,address,contact,pwd)values(?,?,?,?)",(name,address,contact,pwd))
+                cur.execute("insert into user(username,name,email,phone_number,password) values(?,?,?,?,?)",(username,name,email,number,password))
                 con.commit()
+                con.close()
                 flash("Record Added  Successfully") 
-
         except sqlite3.Error as e:
             flash("SQLite error: " + str(e))
         except Exception as e:
             flash("Error: " + str(e))
         finally:
-            if con:
-                con.close()
             return redirect("/")            
     if request.method=='GET':
         return render_template('register.html')
@@ -126,8 +121,38 @@ def logout():
     return redirect("/")
 
 
-##########################################################################################
+#############################################     PROFILE     ###########################################
 
+
+@app.route('/user', methods=['GET'])
+def user():
+    action = request.args.get('action', None)
+    user=None
+    username = session.get('username', None)
+    if username:
+        con=sqlite3.connect(database.DATABASE)
+        con.row_factory=sqlite3.Row
+        cur=con.cursor()
+        cur.execute("select * from user where username=?",(username,))
+        user=cur.fetchone()
+        con.close()
+    if user:
+        if action=='edit':
+            pass
+        if action=='view':
+            pass
+        if action=='change_avatar':
+            pass
+        return render_template('profile.html', user=user)
+    abort(404)
+    
+
+#######################################     RUN THE APPLICATION     ####################################
+
+
+# App Exection
+if __name__== "__main__":
+    app.run(debug=True, host='0.0.0.0')
 
 
 """
@@ -655,12 +680,3 @@ def delete_album(abm):
 ###########################################################################    
 
 """
-
-
-#######################################     RUN THE APPLICATION     ####################################
-
-
-# App Exection
-if __name__== "__main__":
-    app.run(debug=True, host='0.0.0.0')
-

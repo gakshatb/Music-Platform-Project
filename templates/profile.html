@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+<div class="profile-container">
+    <!-- Profile Header -->
+    <div class="profile-header">
+        <img src="{{ url_for('static', filename='profiles/default_avatar.png') }}" alt="User Avatar">
+        <h1>{{ user.name }}</h1>
+        <p>@{{user.username}}</p>
+    </div>
+
+    <!-- Profile Sections -->
+    <div class="sections">
+        <!-- Personal Information Section -->
+        <div class="section">
+            <h2>Personal Information</h2>
+            <p><strong>Email:</strong> john.doe@example.com</p>
+            <p><strong>Joined:</strong> January 2023</p>
+            <p><strong>Location:</strong> New York, USA</p>
+            <a href="/edit-profile" class="button">Edit Profile</a>
+        </div>
+
+        <!-- Playlists Section -->
+        <div class="section">
+            <h2>Your Playlists</h2>
+            <div class="playlist-item"><a href="/playlist/1">- Chill Vibes</a></div>
+            <div class="playlist-item"><a href="/playlist/2">- Workout Mix</a></div>
+            <div class="playlist-item"><a href="/playlist/3">- Favorites</a></div>
+            <a href="/create-playlist" class="button">Create New Playlist</a>
+        </div>
+
+        <!-- Settings Section -->
+        <div class="section">
+            <h2>Settings</h2>
+            <p>Manage your preferences, account settings, and privacy options.</p>
+            <a href="/settings" class="button">Go to Settings</a>
+        </div>
+
+        <!-- Subscription Section -->
+        <div class="section">
+            <h2>Subscription</h2>
+            <p><strong>Status:</strong> Premium Member</p>
+            <p><strong>Renewal Date:</strong> 15th Dec 2024</p>
+            <a href="/manage-subscription" class="button">Manage Subscription</a>
+        </div>
+    </div>
+
+    <!-- Logout Button -->
+    <div class="profile-footer" style="text-align: center; margin-top: 30px;">
+        <a href="/logout" class="button" style="background-color: #FF0000;">Logout</a>
+    </div>
+</div>
+{% endblock %}
