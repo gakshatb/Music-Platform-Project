@@ -35,6 +35,8 @@ app.secret_key= appcfg.SECRET_KEY
 # Landing Page
 @app.route('/', methods=['GET'])
 def index():
+    action = request.args.get('section', None)
+    user=None
     username = session.get('username', None)
     if username:
         con=sqlite3.connect(database.DATABASE)
@@ -43,8 +45,15 @@ def index():
         cur.execute("select * from user where username=?",(username,))
         user=cur.fetchone()
         con.close()
-        return render_template('index.html', user=user)
-    return render_template('index.html', user=None)
+    if action=='about':
+        return render_template('about.html', user=user)
+    if action=='our-mission':
+        return render_template('OurMission.html', user=user)
+    if action=='email':
+        return render_template('contact.html', user=user)
+    if action=='support':
+        return render_template('support.html', user=user)
+    return render_template('index.html', user=user)
 
 
 # Login Functionality.
