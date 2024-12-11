@@ -1,0 +1,86 @@
+{% extends 'base.html' %} {% block title %}FAQs{% endblock %} {% block content
+%}
+<div class="faq-container">
+  <h1>Frequently Asked Questions (FAQs)</h1>
+  <div class="faccordion">
+    <div class="accordion-item-faq">
+      <input type="radio" name="accordion_faq" id="faq1" />
+      <label for="faq1"> What is this music app about? </label>
+
+      <div class="faq-answer" id="answer-1">
+        Our music app is designed to provide users with an immersive music
+        streaming experience, offering a vast library of songs, curated
+        playlists, offline downloads, and more. Whether you're a casual listener
+        or a music enthusiast, we've got something for everyone!
+      </div>
+    </div>
+
+    <div class="accordion-item-faq">
+      <input type="radio" name="accordion_faq" id="faq2" />
+      <label for="faq2">How can I create an account?</label>
+      <div class="faq-answer" id="answer-2">
+        Creating an account is simple. Click on the "Sign Up" button on the
+        homepage, enter your details, and you're good to go. You can also sign
+        up using your Google or Facebook account for quicker access.
+      </div>
+    </div>
+
+    <div class="accordion-item-faq">
+      <input type="radio" name="accordion_faq" id="faq3" />
+      <label for="faq3">Can I download music for offline listening?</label>
+
+      <div class="faq-answer" id="answer-3">
+        Yes, our app allows premium users to download music for offline
+        listening. Simply click the download icon next to your favorite song or
+        playlist.
+      </div>
+    </div>
+
+    <div class="accordion-item-faq">
+      <input type="radio" name="accordion_faq" id="faq4" />
+      <label for="faq4">What subscription plans are available?</label>
+      <div class="faq-answer" id="answer-4">
+        We offer a free plan with ads and limited features, as well as premium
+        plans that include ad-free listening, offline downloads, and
+        high-quality audio. Visit our Subscription page for more details.
+      </div>
+    </div>
+
+    <div class="accordion-item-faq">
+      <input type="radio" name="accordion_faq" id="faq5" />
+      <label for="faq5">How do I cancel my subscription?</label>
+      <div class="faq-answer" id="answer-5">
+        You can cancel your subscription anytime by navigating to the "Account
+        Settings" section and selecting "Cancel Subscription." Your benefits
+        will remain active until the end of your current billing cycle.
+      </div>
+    </div>
+
+    <div class="accordion-item-faq">
+      <input type="radio" name="accordion_faq" id="faq6" />
+      <label for="faq6">Is my data secure with this app?</label>
+      <div class="faq-answer" id="answer-6">
+        Absolutely. We use industry-standard encryption and secure servers to
+        protect your personal and payment information. Check out our Privacy
+        Policy for more details.
+      </div>
+    </div>
+
+    <div class="accordion-item-faq">
+      <input type="radio" name="accordion_faq" id="faq7" />
+      <label for="faq7">Who do I contact for further support?</label>
+      <div class="faq-answer" id="answer-7">
+        For further assistance, you can contact us via email at
+        support@musicapp.com or through the "Help & Support" section in the app.
+        We're here to help!
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  function toggleAnswer(index) {
+    const answer = document.getElementById(`answer-${index}`);
+    answer.style.display = answer.style.display === "block" ? "none" : "block";
+  }
+</script>
+{% endblock %}

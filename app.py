@@ -53,6 +53,8 @@ def index():
         return render_template('contact.html', user=user)
     if action=='support':
         return render_template('support.html', user=user)
+    if action=='faq':
+        return render_template('FAQ.html', user=user)
     return render_template('index.html', user=user)
 
 
