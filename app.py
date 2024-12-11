@@ -85,6 +85,8 @@ def login():
 
 @app.route('/register',methods=['GET','POST'])
 def register():
+    if session.get('username', None):
+        return redirect('/')
     if request.method=='POST':
         try:
             name = request.form['name'].strip()
