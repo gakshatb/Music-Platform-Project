@@ -20,7 +20,9 @@
         {% endif %}
       </div>
       <div class="main-content-right">
-        {% block content %} {% endblock %}
+        <div class="main-webapp">
+          {% block content %} {% endblock %}
+        </div>
       </div>
     </div>
     {%if user %}  
