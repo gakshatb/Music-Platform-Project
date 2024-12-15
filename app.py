@@ -55,7 +55,7 @@ def index():
         return render_template('FAQ.html', user=user)
     return render_template('index.html', user=user)
 
-
+# __cached__
 # Login Functionality.
 @app.route('/login', methods=['GET', 'POST'])
 def login():
