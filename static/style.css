@@ -245,6 +245,8 @@ ion-icon[name="home"] {
 }
 
 .profile img {
+  max-width: 100px;
+  max-height: 100px;
   width: calc(0.5 * var(--sidebar-width));
   height: calc(0.5 * var(--sidebar-width));
   border-radius: calc(0.5 * var(--sidebar-width));
